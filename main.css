@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  font-family: "Tetris", sans-serif;
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 46vh;
+  margin-top: -110px;
+}
+
+body {
+  background-size: 200vh;
+  background-position: calc(50% - 30px) 60%;
+  background-repeat: no-repeat;
+  height: 90vh;
+  background-image: url("1205458.jpg");
+}
+
+.grid {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+}
+
+.grid div {
+  height: 10%;
+  width: 10%;
+  border: 1px solid grey;
+  background-color: black;
+}
+
+.smallGrid {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-left: 35px;
+  background-color: black;
+}
+
+.smallGrid div {
+  height: 20px;
+  width: 20px;
+  border: 1px solid grey;
+}
+
+aside {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid .tetromino {
+  background-color: blue;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(179, 0, 255);
+  font-size: 80px;
+  margin-top: 150px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  padding: 20px 28px 20px 28px;
+  border-radius: 5%;
+  margin-left: 40vh;
+  background-color: rgb(180, 180, 48);
+  box-shadow: 10px 5px 5px rgb(95, 95, 26);
+}
+
+.nextTetr {
+  font-weight: bold;
+}
+
+.playPausebtn {
+  background-color: rgb(185, 87, 87);
+  margin-left: 10px;
+  border: 1px solid rgb(185, 87, 87);
+  border-radius: 5%;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px;
+  font-size: 18px;
+  margin-left: 10vh;
+  box-shadow: 10px 5px 5px rgb(127, 60, 60);
+}
+
+.buttons {
+  margin-left: 30vh;
+}
+
+.allSmallGrid {
+  margin-left: 138vh;
+  margin-top: -200px;
+}
+
+.resetBtn {
+  margin-left: 100vh;
+  background-color: rgb(185, 87, 87);
+  border: 1px solid rgb(185, 87, 87);
+  border-radius: 5%;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px 45px 20px 45px;
+  font-size: 18px;
+  margin-left: 85vh;
+  box-shadow: 10px 5px 5px rgb(107, 50, 50);
+}
+
+@media only screen and (width: 1000px) {
+}
