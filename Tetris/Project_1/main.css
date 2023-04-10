@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+  font-family: "Tetris", sans-serif;
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 12vh;
+}
+
+body {
+  background-size: 200vh;
+  background-position: calc(70% - 10px) 5%;
+  background-image: url("tetrisBackground.jpg");
+  height: 100vh;
+  margin: 0;
+}
+
+.grid {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 35vh;
+  position: relative;
+  bottom: 10em;
+  width: 35vh;
+}
+
+.grid div {
+  height: 10%;
+  width: 10%;
+  border: 1px solid grey;
+  background-color: black;
+}
+
+.smallGrid {
+  display: flex;
+  width: 5em;
+  position: relative;
+  bottom: 10em;
+  left: 111em;
+  flex-wrap: wrap;
+  background-color: black;
+}
+.nextTetr {
+  position: relative;
+  bottom: 9em;
+  left: 93em;
+}
+
+.smallGrid div {
+  height: 20px;
+  width: 20px;
+  border: 1px solid grey;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(179, 0, 255);
+  font-size: 80px;
+  position: relative;
+  top: 1em;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  padding: 20px 28px 20px 28px;
+  border-radius: 5%;
+  position: relative;
+  left: 40em;
+  top: 3em;
+  background-color: rgb(180, 180, 48);
+  box-shadow: 10px 5px 5px rgb(95, 95, 26);
+}
+
+.playPausebtn {
+  background-color: rgb(215, 84, 84);
+  border: 1px solid rgb(185, 87, 87);
+  border-radius: 5%;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px;
+  font-size: 18px;
+  position: relative;
+  left: 15em;
+  top: 3em;
+  box-shadow: 10px 5px 5px rgb(127, 60, 60);
+}
+.playPausebtn:active {
+  background-color: rgb(99, 28, 41);
+}
+
+.buttons {
+  margin-left: 30vh;
+}
+
+.resetBtn {
+  background-color: rgb(215, 84, 84);
+  border: 1px solid rgb(185, 87, 87);
+  border-radius: 5%;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px 45px 20px 45px;
+  font-size: 18px;
+  position: relative;
+  left: 66em;
+  top: 3em;
+  box-shadow: 10px 5px 5px rgb(107, 50, 50);
+}
+
+.resetBtn:active {
+  background-color: rgb(99, 28, 41);
+}
+
+.nextTetr {
+  color: rgb(80, 234, 234);
+}
+
+@media only screen and (max-width: 1600px) {
+  .grid-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 8em;
+  }
+
+  .grid {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 300px;
+    position: relative;
+    bottom: 10em;
+    width: 300px;
+  }
+
+  .playPausebtn {
+    background-color: rgb(215, 84, 84);
+    border: 1px solid rgb(185, 87, 87);
+    border-radius: 5%;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 18px;
+    position: relative;
+    top: 13em;
+    left: 1em;
+    box-shadow: 10px 5px 5px rgb(155, 60, 60);
+  }
+
+  h1 {
+    text-align: center;
+    color: rgb(179, 0, 255);
+    font-size: 80px;
+    position: relative;
+    top: 0em;
+  }
+
+  .resetBtn {
+    background-color: rgb(215, 84, 84);
+    border: 1px solid rgb(185, 87, 87);
+    border-radius: 5%;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20px 45px 20px 45px;
+    font-size: 18px;
+    position: relative;
+    top: 13em;
+    left: 38em;
+    box-shadow: 10px 5px 5px rgb(155, 60, 60);
+  }
+
+  div {
+    height: 0%;
+  }
+  .progress {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    padding: 20px 28px 20px 28px;
+    border-radius: 5%;
+    position: relative;
+    left: 15em;
+    top: -5em;
+    background-color: rgb(180, 180, 48);
+    box-shadow: 10px 5px 5px rgb(95, 95, 26);
+  }
+  .smallGrid {
+    display: flex;
+    width: 80px;
+    flex-wrap: wrap;
+    bottom: 18em;
+    position: relative;
+    left: 68em;
+    background-color: black;
+  }
+  .nextTetr {
+    position: relative;
+    left: 56em;
+    bottom: 15em;
+  }
+}
