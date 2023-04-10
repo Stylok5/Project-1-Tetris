@@ -1,6 +1,6 @@
 # Project One - Tetris
 
-##Table of Contents:
+## Table of Contents:
 
 1.  Project Overview
 2.  How to Play
