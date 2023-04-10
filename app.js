@@ -3,10 +3,13 @@ const width = 10;
 const height = 21;
 const numberOfBoxes = width * height;
 let boxes = [];
+let timerId;
 const grid = document.querySelector(".grid");
 const colors = ["orange", "red", "purple", "green", "blue"];
+const playPause = document.querySelector(".playPausebtn");
+const reset = document.querySelector(".resetBtn");
+const footer = document.querySelector("footer");
 const smallGrid = document.querySelector(".smallGrid");
-let timerId;
 const scoreSel = document.querySelector(".score");
 const linesSel = document.querySelector(".lines");
 const level = document.querySelector(".levels");
@@ -24,7 +27,7 @@ sound5.volume = 0.1;
 let score = 0;
 let lines = 0;
 
-// Function to create the base grid where the game is taking place
+// Function for the game grid
 function createGrid() {
   for (let index = 0; index < numberOfBoxes; index++) {
     const box = document.createElement("div");
@@ -34,51 +37,9 @@ function createGrid() {
 }
 createGrid();
 
-//Creating the smaller grid which displays the next tetromino
-//Variables
-const displayWidth = 4;
-const smallWidth = 4;
-const smallHeight = 4;
-const smallNumberOfBoxes = smallWidth * smallHeight;
-let smallBoxes = [];
-let nextRandom = 0;
+//Creating the tetrominos using indexes and width to draw them across the grid.
+//Each array contains the four different rotations of each tetromino
 
-//function for creating small grid
-function createSmallGrid() {
-  for (let index = 0; index < smallNumberOfBoxes; index++) {
-    const smallBox = document.createElement("div");
-    document.querySelector(".smallGrid").appendChild(smallBox);
-    smallBoxes.push(smallBox);
-  }
-}
-createSmallGrid();
-
-console.log(smallBoxes);
-console.log(boxes);
-
-//Array which contains arrays of the first rotation of each of the tetrominos
-const nextTetromino = [
-  [1, displayWidth + 1, displayWidth * 2 + 1, 2],
-  [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
-  [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
-  [displayWidth, displayWidth + 1, 1, displayWidth + 2],
-  [0, 1, displayWidth, displayWidth + 1],
-];
-
-//Function to display the next tetromino
-function displayTetromino() {
-  smallBoxes.forEach((square) => {
-    square.classList.remove("tetromino"); //removes the previous tetromino so that they dont overlap with each other
-    square.style.backgroundColor = "";
-  });
-  nextTetromino[nextRandom].forEach((index) => {
-    smallBoxes[index].classList.add("tetromino");
-    smallBoxes[index].style.backgroundColor = colors[nextRandom]; //nextRandom passes its value to random value
-  });
-}
-
-//Creating the tetrominos using indexes and width to draw them across the grid. Each array is one of the four different rotations of each tetromino
-//width = 10 which is the next row
 const lTetromino = [
   [1, width + 1, width * 2 + 1, 2],
   [width, width + 1, width + 2, width * 2 + 2],
@@ -123,18 +84,8 @@ const tetrominos = [
   boxTetromino,
 ];
 
-//Array containing the different colors of tetrominos
-let tetrominoColors = [
-  "purple",
-  "cyan",
-  "blue",
-  "yellow",
-  "orange",
-  "green",
-  "red",
-];
-
-//CurrentPosition is the position 4 in the grid where each tetromino starts from and current rotation 0 is the first rotation of each tetromino
+//CurrentPosition is the position 4 in the grid where each tetromino starts
+//from and current rotation 0 is the first rotation of each tetromino
 let currentPosition = 4;
 let currentRotation = 0;
 let random = Math.floor(Math.random() * tetrominos.length);
@@ -143,19 +94,15 @@ console.log(tetrominos);
 console.log(tetrominos.length);
 console.log(current.length);
 
-//Function to create tetromino
 function createTetromino() {
   current.forEach((index) => {
-    boxes[currentPosition + index].classList.add("tetromino"); //creating the tetromino using currentposition and index as a parameter which takes the value of each tetrominos index number
     boxes[currentPosition + index].style.backgroundColor = colors[random]; //assigning a random color from colors array
     console.log(index);
   });
 }
 
-//Function to remove tetromino
 function removeTetromino() {
   current.forEach((index) => {
-    boxes[currentPosition + index].classList.remove("tetromino");
     boxes[currentPosition + index].style.backgroundColor = "";
   });
 }
@@ -178,12 +125,13 @@ function keyRotate(event) {
   }
 }
 
-//Function which makes the tetromino move down
+//Function which makes the tetromino fall down
 function goDown() {
   if (
     current.some(
       (index) =>
-        boxes[currentPosition + index + width].classList.contains("taken") //checks if the next line contains the class taken. If it does then it calls the freeze function otherwise keeps moving the tetromino to the next line
+        boxes[currentPosition + index + width].classList.contains("taken") //checks if the next line contains the class taken.
+      //If it does then it calls the freeze function otherwise keeps moving the tetromino to the next line
     )
   ) {
     freeze();
@@ -196,19 +144,21 @@ function goDown() {
   }
 }
 
-//Loop that creates 10 divs that do not have style then adds the class taken to them which will be used for the freeze function
+//Loop that creates 10 divs that do not have style then adds
+//the class taken to them which will be used to freeze the tetromino at the bottom
 for (let index = 200; index < 210; index++) {
   boxes[index].classList.add("taken");
   boxes[index].style.border = 0;
   boxes[index].style.width = 0;
 }
 
-//Function that is called in the movedown function. If the next line contains the class taken then it adds the class taken to the tetromino and freezes it
+//Function that is called in the goDown function to freeze the tetrominoes
+//if they collide with a previously placed tetromino or with the bottom side
 function freeze() {
   current.forEach((index) =>
     boxes[currentPosition + index].classList.add("taken")
   );
-  random = nextRandom;
+  random = nextRandom; //saving the value
   nextRandom = Math.floor(Math.random() * tetrominos.length);
   current = tetrominos[random][0];
   console.log(current);
@@ -219,7 +169,8 @@ function freeze() {
   gameOver();
 }
 
-//function for the tetromimo that stops it from going outside the left border of the grid
+//functions that stop the tetromino from going outside of the left border or right border of the grid
+
 function goLeft() {
   removeTetromino();
   const leftBorder = current.some(
@@ -239,7 +190,6 @@ function goLeft() {
   createTetromino();
 }
 
-//function for the tetromimo that stops it from going outside the right border of the grid
 function goRight() {
   removeTetromino();
   const rightBorder = current.some(
@@ -282,7 +232,8 @@ function checkRotatedPosition() {
       console.log("is it right is true");
       //use actual position to check if it's flipped over to right side
       currentPosition += 1; //if so, add one to wrap it back around
-      checkRotatedPosition(); //check again.  Pass position from start, since long block might need to move more.
+      checkRotatedPosition(); //Checks the rotated position again as in the case of a
+      //longer tetromino like the l one it may need to be moved more than once
     }
   } else if (currentPosition % width > 5) {
     if (isAtLeft()) {
@@ -296,7 +247,7 @@ function checkRotatedPosition() {
     }
   }
 
-  // check if the rotated tetromino overlaps with any taken squares
+  //check if the rotated tetromino overlaps with any taken squares
   if (
     current.some((index) =>
       boxes[currentPosition + index].classList.contains("taken")
@@ -304,7 +255,6 @@ function checkRotatedPosition() {
   ) {
     // move the tetromino up by one row
     currentPosition -= width;
-
     // If the tetromino still overlaps with any taken squares after moving up,
     // then move it back down and reset the current rotation.
     if (
@@ -324,7 +274,8 @@ function checkRotatedPosition() {
   console.log(isAtBottom());
 }
 
-//Function that rotates the object adding +1 each time to the current rotation which starts from 0. The rotations are 3 arrays, if we try after the third rotation we go back to the first one with index 0.
+//Function that rotates the tetromino by looping throught the different rotation states
+
 function rotate() {
   removeTetromino();
   currentRotation++;
@@ -338,8 +289,8 @@ function rotate() {
   createTetromino();
 }
 
-//Event listener for the play and pause button
-const playPause = document.querySelector(".playPausebtn");
+//Play/Pause button logic
+
 playPause.addEventListener("click", () => {
   if (timerId) {
     sound.src = "audioFiles/mixkit-positive-interface-beep-221.wav";
@@ -359,7 +310,7 @@ playPause.addEventListener("click", () => {
   }
 });
 
-//Function to remove the last line if its filled with tetromino blocks
+//Removal of line if filled with tetrominoes
 function removeLine() {
   for (let i = 0; i < 199; i += width) {
     const row = [
@@ -380,7 +331,6 @@ function removeLine() {
       //if each of the squares of that row include the class taken the it does the following
       row.forEach((index) => {
         boxes[index].classList.remove("taken");
-        boxes[index].classList.remove("tetromino");
         boxes[index].style.backgroundColor = "";
       });
       sound2.src = "audioFiles/mixkit-retro-arcade-casino-notification-211.wav";
@@ -399,21 +349,20 @@ function removeLine() {
         timerId = setInterval(goDown, 200);
       }
       const boxesRemoved = boxes.splice(i, width); //With splice we get just the 10 last divs that contain the tetromino class
-      boxes = boxesRemoved.concat(boxes); //With the concant method the array boxesremove is merged with the boxes array
+      boxes = boxesRemoved.concat(boxes); //With the concat method the array boxesRemoved is merged with the boxes array
       boxes.forEach((cell) => grid.appendChild(cell)); //The row that was deleted is appended on top of the grid so that the grid doesn't appear smaller
       console.log(boxesRemoved);
     }
   }
 }
 
-const footer = document.querySelector("footer");
-//Function which checks if the next line contains the class taken. If it does it clears the interval and removes the keys event listeners.
+//Function that triggers if a tetromino is at the top row
 function gameOver() {
-  if (
-    current.some((index) =>
-      boxes[currentPosition + index].classList.contains("taken")
-    )
-  ) {
+  const topRow = Array.from(Array(width), (_, i) => i); // Create an array representing the indices of the top row
+  const tetrominoOverlapping = topRow.some((index) =>
+    boxes[index].classList.contains("taken")
+  );
+  if (tetrominoOverlapping) {
     clearInterval(timerId);
     sound4.src = "audioFiles/mixkit-arcade-retro-game-over-213.wav";
     sound4.play();
@@ -426,17 +375,57 @@ function gameOver() {
   }
 }
 
-const reset = document.querySelector(".resetBtn");
 reset.addEventListener("click", () => {
   const sound6 = new Audio("audioFiles/mixkit-game-flute-bonus-2313.wav");
   sound6.play();
   sound6.volume = 0.1;
   setTimeout(() => {
     window.location.reload();
-  }, 600); // Delay the reload by 1 second (1000 milliseconds)
+  }, 600); // Delay the reload so that the sound can play
 });
 
-//Added an event listener so that when I clicked the down key the page wouldnt scroll down
+//Variables for small grid
+const displayWidth = 4;
+const smallWidth = 4;
+const smallHeight = 4;
+const smallNumberOfBoxes = smallWidth * smallHeight;
+let smallBoxes = [];
+let nextRandom = 0;
+
+//function for creating small grid
+function createSmallGrid() {
+  for (let index = 0; index < smallNumberOfBoxes; index++) {
+    const smallBox = document.createElement("div");
+    document.querySelector(".smallGrid").appendChild(smallBox);
+    smallBoxes.push(smallBox);
+  }
+}
+createSmallGrid();
+console.log(smallBoxes);
+console.log(boxes);
+
+//Array which contains the first rotation state of each of the tetrominoes
+const nextTetromino = [
+  [1, displayWidth + 1, displayWidth * 2 + 1, 2],
+  [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
+  [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
+  [displayWidth, displayWidth + 1, 1, displayWidth + 2],
+  [0, 1, displayWidth, displayWidth + 1],
+];
+
+//Function to display the next tetromino
+function displayTetromino() {
+  smallBoxes.forEach((square) => {
+    square.classList.remove("tetromino"); //removes the previous tetromino so that they dont overlap with each other
+    square.style.backgroundColor = "";
+  });
+  nextTetromino[nextRandom].forEach((index) => {
+    smallBoxes[index].classList.add("tetromino");
+    smallBoxes[index].style.backgroundColor = colors[nextRandom]; //nextRandom passes its value to random value
+  });
+}
+
+//Event listener to prevent scrolling of page when pressing the down arrow key
 window.addEventListener(
   "keydown",
   function (e) {
