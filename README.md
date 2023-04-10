@@ -1,4 +1,4 @@
-**Project One - Tetris**
+# Project One - Tetris
 
 Table of Contents:
 
