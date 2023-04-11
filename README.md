@@ -5,7 +5,7 @@
 1.  Project Overview
 2.  How to Play
 3.  Game Brief
-4.  Techonologies Used
+4.  Technologies Used
 5.  Timeline
 6.  Features
 7.  Bugs
@@ -28,7 +28,7 @@ Play Tetris here: https://stylok5.github.io/
 
 ## How to Play
 
-- Click play/pause to start the game click again to pause and click reset to reset everything back to 0.
+- Click play/pause to start the game, click again to pause and click reset to reset everything back to 0.
 - Move the falling tetrominoes and adjust them to complete horizontal lines.
 - Use the left and right arrow keys to move the tetrominoes horizontally.
 - Use the up arrow key to rotate the tetrominoes.
@@ -39,9 +39,9 @@ Play Tetris here: https://stylok5.github.io/
 
 ## Game Brief
 
-Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using like stack overflow.
+Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using sites like Stack Overflow.
 
-Before I started with coding I wrote some pseudocode and did some wireframing using excalidraw, so that I could better plan out what I would do each day by breaking the project into smaller parts.
+Before I started with coding I wrote some pseudocode and did some wireframing using Excalidraw, so that I could better plan out what I would do each day by breaking the project into smaller parts.
 This was the plan I ended up with :
 
 - Write the html and create the grid where the game would take place
@@ -52,10 +52,10 @@ This was the plan I ended up with :
 - Adding a game over message for when the tetromino reaches the top
 - Adding score lines and levels that change when you complete a number of lines
 - Add a reset button and work on the styling using css
-- Strech goals like adding a smaller grid that displays the next falling tetromino, adding sound effects and improving styling
+- Stretch goals like adding a smaller grid that displays the next falling tetromino, adding sound effects and improving styling
 - Bug fixes
 
-## Techonologies Used
+## Technologies Used
 
 - HTML5 with HTML5 audio
 - CSS3 with animation
@@ -72,13 +72,13 @@ The first day was mostly spent on writing down what I had to do for the next two
 
 ### Day 2 :
 
-On the second day I started with creating a 10\*21 grid. I used a simple for loop to create the divs and append them to the grid element and also pushed them inside an initially empty boxes array which I would later use to display the tetrominoes. I then styled the grid-wrapper, grid and grid div.
+On the second day I started with creating a 10*21 grid. I used a simple for loop to create the divs and append them to the grid element and also pushed them inside an initially empty boxes array which I would later use to display the tetrominoes. I then styled the grid-wrapper, grid and grid div.
 
 ![Alt text](https://i.imgur.com/1eNXKBf.png "Optional title")
 
 ![Alt text](https://i.imgur.com/9f4GkfO.png "Optional title")
 
-After I was done with the grid I started thinking about how I would display the tetrominoes. After thinking and researching about I decided I would use arrays. Tetrominoes with their four different rotations:
+After I was done with the grid I started thinking about it how I would display the tetrominoes. After thinking and researching about I decided I would use arrays. Tetrominoes with their four different rotations:
 
 ![Alt text](https://i.imgur.com/kft3VCH.png "Optional title")
 
@@ -92,11 +92,11 @@ I started getting into the trickier parts. First I had to figure out how to disp
 
 ![Alt text](https://i.imgur.com/mwCn2Q0.png "Optional title")
 
-For now creating the tetromino I looped through the current array, and added currentPosition and index. The currentPosition variable represents the current vertical position of the tetromino on the game board. Index refers to the individual cells that make up the tetromino. With adding those two together we get the absolute position of each div on the game board. I then access the corresponding boxes array which represents the DOM element of the div in the game board grid with this _boxes[currentPosition + index]_ and set the color of the tetromino.
+For now creating the tetromino I looped through the current array, and added currentPosition and index. The currentPosition variable represents the current vertical position of the tetromino on the game board. Index refers to the individual cells that make up the tetromino. With adding those two together we get the absolute position of each div on the game board. I then access the corresponding boxes array which represents the DOM element of the div in the game board grid using this code _boxes[currentPosition + index]_ and set the color of the tetromino.
 
 ![Alt text](https://i.imgur.com/4hPQ4Z7.png "Optional title")
 
-After this I needed to create a goDown function that would make the tetromino fall down. For that I would need to add the width to the currentPosition so that the tetromino would move a row down. But I also needed to remove the previous tetromino otherwise they would keep stacking together. So I created a remove function and then combined all together in my goDown function.
+After this I needed to create a goDown function that would make the tetromino fall down. For that I would need to add the width to the currentPosition so that the tetromino would move a row down. But I also needed to remove the previous tetromino otherwise they would keep stacking together. So I created a remove function and then combined itc all together in my goDown function.
 
 ![Alt text](https://i.imgur.com/Dc9q8PY.png "Optional title")
 
@@ -104,7 +104,7 @@ After this I needed to create a goDown function that would make the tetromino fa
 
 ### Day 4 and 5 :
 
-For the fourth day I had two goals. First one was to make the tetrominoes stop moving when reaching the bottom row and to also make them stop when reaching another previously placed tetromino. This took me quite some time to work out. I decided that I would have another line underneath the last row of the grid that would basically be invinsible by setting the width and border to 0. I then added a classlist of taken for each div of this line.
+For the fourth day I had two goals. First one was to make the tetrominoes stop moving when reaching the bottom row and to also make them stop when reaching another previously placed tetromino. This took me quite some time to work out. I decided that I would have another line underneath the last row of the grid that would basically be invisible by setting the width and border to 0. I then added a classlist of taken for each div of this line.
 
 ![Alt text](https://i.imgur.com/bLzkGiY.png "Optional title")
 
@@ -120,7 +120,7 @@ which I then used in my goDown function
 
 ![Alt text](https://i.imgur.com/x8Fvel8.png "Optional title")
 
-that checks if there is a div that contains a class of taken. If there is it calls the freeze function otherwise the tetromino keeps falling.
+that checks if there is a div that contains a class of taken. If there is, it calls the freeze function, otherwise the tetromino keeps falling.
 
 ### Day 6 and 7 :
 
@@ -140,7 +140,7 @@ I incremented the currentPosition by one and then set the rotation to 0 after lo
 
 ### Day 8 and 9 :
 
-Rotating the tetrominos posed a lot of new problems. First when the tetrominoes were rotated at the right, left or bottom side they would split and second when rotating next to other tetrominoes they would pass through them. This was quite tricky to solve and required a bit of research. The t and l tetrominoes specifically were the most challenging to fix. Making them not split when on the edge of each side was the easier part as it was similar to the movement part.
+Rotating the tetrominoes posed a lot of new problems. First when the tetrominoes were rotated at the right, left or bottom side they would split and second when rotating next to other tetrominoes they would pass through them. This was quite tricky to solve and required a bit of research. The t and l tetrominoes specifically were the most challenging to fix. Making them not split when on the edge of each side was the easier part as it was similar to the movement part.
 
 ![Alt text](https://i.imgur.com/y1n4O4i.png "Optional title")
 
@@ -158,7 +158,7 @@ Now the basic functionalities left were to add the logic for removing a line whe
 
 ![Alt text](https://i.imgur.com/DMtXjDh.png "Optional title")
 
-The remove line logic is explained throughout the comments. It basically checks if every div in a row contains the taken class. If that is true the line is removed by using the splice method, then the removedBoxes array is concatenated with the remaining boxes array using the concat method and finally the removed divs are appended back to the top of the grid using the appendChild method so that the grid doesnt appear smaller.
+The remove line logic is explained throughout the comments. It basically checks if every div in a row contains the taken class. If that is true the line is removed by using the splice method, then the removedBoxes array is concatenated with the remaining boxes array using the concat method and finally the removed divs are appended back to the top of the grid using the appendChild method so that the grid does not appear smaller.
 
 I then proceeded to create the gameOver function.
 
@@ -168,7 +168,7 @@ The function first checks if the topRow contains a class of taken, if it does it
 
 **Day 12**:
 
-I started with adding a play/pause and a reset button for the game. For the play/pause we use a _let timerId_ variable. It's initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
+I started with adding a play/pause and a reset button for the game. For the play/pause we use a _let timerId_ variable. Its initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
 
 ![Alt text](https://i.imgur.com/DO1dDy2.png "Optional title")
 
