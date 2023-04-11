@@ -224,7 +224,7 @@ I found the project challenging but at the same time a really usefull learning e
 
 ## Credits
 
-- Niklas Fischer, SEI instructor for starter code -- which helped in the creation of the grids.
+- Niklas Fischer, SEI instructor for starter code -- helped in the creation of the grids.
 
 - Ania Kubow's Code Tetris: JavaScript Tutorial for Beginners https://www.youtube.com/watch?v=rAUn1Lom6dw
 
