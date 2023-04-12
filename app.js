@@ -96,10 +96,6 @@ console.log(current.length);
 let isGameOver = false;
 let hasTetrominoReachedTop = false;
 
-
-let isGameOver = false;
-let hasTetrominoReachedTop = false;
-
 function createTetromino() {
   if (isGameOver || hasTetrominoReachedTop) {
     return;
