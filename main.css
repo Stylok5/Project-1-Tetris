@@ -99,6 +99,11 @@ h1 {
   margin-left: 30vh;
 }
 
+footer {
+  position: relative;
+  bottom: 4em;
+}
+
 .resetBtn {
   background-color: rgb(215, 84, 84);
   border: 1px solid rgb(185, 87, 87);

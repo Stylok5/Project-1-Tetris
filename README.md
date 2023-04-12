@@ -20,7 +20,7 @@ This project is an implementation of the classic game Tetris. It allows the play
 
 Tetris is a puzzle video game created by the Soviet software engineer Alexey Pajitnov in 1984. It has been published by several companies for multiple platforms and is one of the best-selling video games of all time.
 
-This was my first project from General Assembly's Software Engineering Immersive course built in 13 days and my first real-world type practice with JavaScript.
+This was my first project from General Assembly's Software Engineering Immersive course built in 14 days and my first real-world type practice with JavaScript.
 
 Play Tetris here: https://stylok5.github.io/
 
@@ -176,21 +176,35 @@ And then for the reset button I added a delay to the page reload for a sound to 
 
 ![Alt text](https://i.imgur.com/FF9fDOH.png "Optional title")
 
-After having basically completed the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio for some of the actions in game and added text for score lines and levels that would be incremented depending on some actions that were completed.
+After having basically added the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio for some of the actions in game. I continued with adding text for score, lines and levels that would be incremented depending on some actions that were completed.
 
 ![Alt text](https://i.imgur.com/IXh66a8.png "Optional title")
 
-Lastly an event listener so that the page wouldn't scroll down when pressing the arrow key.
+Lastly, I used an event listener so that the page wouldn't scroll down when pressing the arrow key.
 
 ![Alt text](https://i.imgur.com/70xnl9Q.png "Optional title")
 
-### Day 13 :
 
-As I still had some time I decided to go for my stretch goal which was to make a smaller grid that would display then next tetromino falling down. I used a for loop for creating the small grid the same way I did for the game grid. Then I created an array that contained every first rotation of each tetromino and a function for displaying the next tetromino.
+### Day 13 and 14 :
+
+As I still had some time I decided to go for my two stretch goals which were to make a smaller grid that would display the next tetromino falling down and a function that changes the speed the tetrominoes are falling depending on the lines removed. I used a for loop for creating the small grid the same way I did for the game grid. Then I created an array that contained every first rotation of each tetromino and a function for displaying the next tetromino.
 
 ![Alt text](https://i.imgur.com/LhxGd9F.png "Optional title")
 
-Spent the rest of the day testing everything for any errors and bugs, and policing the look of the game, so that it gives off an arcade feel. The app was finally deployed using GitHub pages.
+The logic to change the levels was a bit more complicated than I thought and required editing the code in other places as well. Even though the speed changed when reaching level 2 and 3 I couldn't pause the button and there was also a bug with the game over function. At first I had added every condition to change the levels in the removeLine function, but as the code was becoming hard to read I created a different changingLevel function and called that inside the removeLine.
+
+![Alt text](https://i.imgur.com/8IsaqKG.png "Optional title")
+
+The last thing left was to add a gameOver function.
+
+![Alt text](https://i.imgur.com/z2ZMS1G.png "Optional title")
+
+I also needed to stop the tetromino creation when reaching the top so I updated the code for createTetromino.
+
+![Alt text](https://i.imgur.com/P47D9j3.png "Optional title")
+
+The rest of the day was spent on ironing out any smaller bugs left and policing the look of the game, so that it gives off an arcade feel. The app was finally deployed using GitHub pages.
+
 
 ## Features
 
@@ -206,21 +220,21 @@ Spent the rest of the day testing everything for any errors and bugs, and polici
 
 ## Bugs
 
-Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes. I managed to fix most of them, but I think there are still two small ones left, first one would be when a tetromino reaches the top there is a small delay before the game over function is triggered and also I think that the l tetromino still sometimes passes through other previously placed tetrominoes when rotating depending on its location on the grid.
+Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes and the level change which I was not expecting it to pose as much of a challenge as it did. After a lot testing though, I think all the bugs have been fixed.
 
 ## Wins and Challenges
 
-I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invinsible line that would contain the class of taken. Another big win was achieving my stretch goal of making a smaller grid that would display the next tetromino and also accomplishing the arcade feel I wanted for the game.
+I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invinsible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines succesfully removed.
 
-I would say the biggest challenges would be the freeze function and the conditions for the rotating tetrominoes.
+I would say the biggest challenges would be figuring out the freeze function, fixing the bugs having to do with the rotation of the tetrominoes and the levels change.
 
 ## Future Content and Improvements
 
-Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller screens. Prioritizing the resolution of those smaller bugs as well as improving code readability and conciseness would propably be my final improvements.
+Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller screens. Improving code readability and conciseness would also be a priority.
 
 ## Key Learnings
 
-I found the project challenging but at the same time a really usefull learning experience. In general I would say that even the challenges I faced were quite beneficial as I became more accostumed to paying more attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. I also improved my researching and problem solving skills that were put to the test during this project.
+I found the project challenging but at the same time a really usefull learning experience. In general I would say that even the blockers I faced were quite beneficial as I became more accostumed to paying attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. Finally I think I improved my researching and problem solving skills and got a lot of confidence with writing code on my own, as I figured, that with enough trial and error everything can be fixed.
 
 ## Credits
 
