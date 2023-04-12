@@ -5,7 +5,7 @@
 1.  Project Overview
 2.  How to Play
 3.  Game Brief
-4.  Techonologies Used
+4.  Technologies Used
 5.  Timeline
 6.  Features
 7.  Bugs
@@ -39,7 +39,7 @@ Play Tetris here: https://stylok5.github.io/
 
 ## Game Brief
 
-Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using like stack overflow.
+Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using sites like stack overflow.
 
 Before I started with coding I wrote some pseudocode and did some wireframing using excalidraw, so that I could better plan out what I would do each day by breaking the project into smaller parts.
 This was the plan I ended up with :
@@ -52,10 +52,10 @@ This was the plan I ended up with :
 - Adding a game over message for when the tetromino reaches the top
 - Adding score lines and levels that change when you complete a number of lines
 - Add a reset button and work on the styling using css
-- Strech goals like adding a smaller grid that displays the next falling tetromino, adding sound effects and improving styling
+- Stretch goals like adding a smaller grid that displays the next falling tetromino, adding sound effects and improving styling
 - Bug fixes
 
-## Techonologies Used
+## Technologies Used
 
 - HTML5 with HTML5 audio
 - CSS3 with animation
@@ -78,7 +78,7 @@ On the second day I started with creating a 10\*21 grid. I used a simple for loo
 
 ![Alt text](https://i.imgur.com/9f4GkfO.png "Optional title")
 
-After I was done with the grid I started thinking about how I would display the tetrominoes. After thinking and researching about I decided I would use arrays. Tetrominoes with their four different rotations:
+After I was done with the grid I started thinking about how I would display the tetrominoes. After thinking and researching about it I decided I would use arrays. Tetrominoes with their four different rotations:
 
 ![Alt text](https://i.imgur.com/kft3VCH.png "Optional title")
 
@@ -104,7 +104,7 @@ After this I needed to create a goDown function that would make the tetromino fa
 
 ### Day 4 and 5 :
 
-For the fourth day I had two goals. First one was to make the tetrominoes stop moving when reaching the bottom row and to also make them stop when reaching another previously placed tetromino. This took me quite some time to work out. I decided that I would have another line underneath the last row of the grid that would basically be invinsible by setting the width and border to 0. I then added a classlist of taken for each div of this line.
+For the fourth day I had two goals. First one was to make the tetrominoes stop moving when reaching the bottom row and to also make them stop when reaching another previously placed tetromino. This took me quite some time to work out. I decided that I would have another line underneath the last row of the grid that would basically be invisible by setting the width and border to 0. I then added a classlist of taken for each div of this line.
 
 ![Alt text](https://i.imgur.com/bLzkGiY.png "Optional title")
 
@@ -120,7 +120,7 @@ which I then used in my goDown function
 
 ![Alt text](https://i.imgur.com/x8Fvel8.png "Optional title")
 
-that checks if there is a div that contains a class of taken. If there is it calls the freeze function otherwise the tetromino keeps falling.
+that checks if there is a div that contains a class of taken. If there is, it calls the freeze function, otherwise the tetromino keeps falling.
 
 ### Day 6 and 7 :
 
@@ -128,7 +128,7 @@ On day 6 I wanted to add movement with the arrow keys.
 
 ![Alt text](https://i.imgur.com/1gt8kSs.png "Optional title")
 
-I then needed to actually create the functions that would move the tetrominos around. This is my goLeft function, did the sam thing with the goRight one and just swapped the -- and ++ operators.
+I then needed to actually create the functions that would move the tetrominoes around. This is my goLeft function, did the same thing with the goRight one and just swapped the -- and ++ operators.
 
 ![Alt text](https://i.imgur.com/4JRE100.png "Optional title")
 
@@ -136,11 +136,11 @@ And finally for the rotate function,
 
 ![Alt text](https://i.imgur.com/blbXywL.png "Optional title")
 
-I incremented the currentPosition by one and then set the rotation to 0 after looping throught all rotation states. Then with the last two lines the current variable is updated with the next rotation and the tetromino is then created and displayed.
+I incremented the currentPosition by one and then set the rotation to 0 after looping through all rotation states. Then with the last two lines the current variable is updated with the next rotation and the tetromino is then created and displayed.
 
 ### Day 8 and 9 :
 
-Rotating the tetrominos posed a lot of new problems. First when the tetrominoes were rotated at the right, left or bottom side they would split and second when rotating next to other tetrominoes they would pass through them. This was quite tricky to solve and required a bit of research. The t and l tetrominoes specifically were the most challenging to fix. Making them not split when on the edge of each side was the easier part as it was similar to the movement part.
+Rotating the tetrominoes posed a lot of new problems. First when the tetrominoes were rotated at the right, left or bottom side they would split and second when rotating next to other tetrominoes they would pass through them. This was quite tricky to solve and required a bit of research. The t and l tetrominoes specifically were the most challenging to fix. Making them not split when on the edge of each side was the easier part as it was similar to the movement part.
 
 ![Alt text](https://i.imgur.com/y1n4O4i.png "Optional title")
 
@@ -158,7 +158,7 @@ Now the basic functionalities left were to add the logic for removing a line whe
 
 ![Alt text](https://i.imgur.com/DMtXjDh.png "Optional title")
 
-The remove line logic is explained throughout the comments. It basically checks if every div in a row contains the taken class. If that is true the line is removed by using the splice method, then the removedBoxes array is concatenated with the remaining boxes array using the concat method and finally the removed divs are appended back to the top of the grid using the appendChild method so that the grid doesnt appear smaller.
+The remove line logic is explained throughout the comments. It basically checks if every div in a row contains the taken class. If that is true the line is removed by using the splice method, then the removedBoxes array is concatenated with the remaining boxes array using the concat method and finally the removed divs are appended back to the top of the grid using the appendChild method so that the grid does not appear smaller.
 
 I then proceeded to create the gameOver function.
 
@@ -168,7 +168,7 @@ The function first checks if the topRow contains a class of taken, if it does it
 
 **Day 12**:
 
-I started with making a play/pause and a reset button for the game. For the play/pause I used a _let timerId_ variable. It's initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
+I started with making a play/pause and a reset button for the game. For the play/pause I used a _let timerId_ variable. Its initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
 
 ![Alt text](https://i.imgur.com/DO1dDy2.png "Optional title")
 
@@ -218,13 +218,13 @@ The rest of the day was spent on ironing out any smaller bugs left and policing 
 
 ## Bugs
 
-Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes and the level change which I was not expecting it to pose as much of a challenge as it did. After a lot testing though, I think all the bugs have been fixed.
+Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes and the level change which I was not expecting it to pose as much of a challenge as it did. After a lot of testing though, I believe all the bugs have been fixed.
 
 ## Wins and Challenges
 
-I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invinsible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines succesfully removed.
+I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invisible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines successfully removed.
 
-I would say the biggest challenges would be figuring out the freeze function, fixing the bugs having to do with the rotation of the tetrominoes and the levels change.
+I would say the biggest challenges would be figuring out the freeze function, fixing the bugs having to do with the rotation of the tetrominoes and the level change.
 
 ## Future Content and Improvements
 
@@ -232,7 +232,7 @@ Some future improvements would be to make the app mobile responsive as the styli
 
 ## Key Learnings
 
-I found the project challenging but at the same time a really usefull learning experience. In general I would say that even the blockers I faced were quite beneficial as I became more accostumed to paying attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. Finally I think I improved my researching and problem solving skills and got a lot of confidence with writing code on my own, as I figured, that with enough trial and error everything can be fixed.
+I found the project challenging but at the same time a really useful learning experience. In general I would say that even the blockers I faced were quite beneficial as I became more accustomed to paying attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. Finally I think I improved my research and problem solving skills and got a lot of confidence with writing code on my own, as I figured that, that with enough trial and error and by staying persistent, anything can be fixed.
 
 ## Credits
 
