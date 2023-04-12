@@ -3,16 +3,15 @@ const width = 10;
 const height = 21;
 const numberOfBoxes = width * height;
 let boxes = [];
-let timerId;
 const grid = document.querySelector(".grid");
 const colors = ["orange", "red", "purple", "green", "blue"];
 const playPause = document.querySelector(".playPausebtn");
+const levelSel = document.querySelector(".levels");
 const reset = document.querySelector(".resetBtn");
 const footer = document.querySelector("footer");
 const smallGrid = document.querySelector(".smallGrid");
 const scoreSel = document.querySelector(".score");
 const linesSel = document.querySelector(".lines");
-const level = document.querySelector(".levels");
 const sound = document.createElement("audio");
 const sound2 = document.createElement("audio");
 const sound3 = document.createElement("audio");
@@ -94,9 +93,29 @@ console.log(tetrominos);
 console.log(tetrominos.length);
 console.log(current.length);
 
+
+let isGameOver = false;
+let hasTetrominoReachedTop = false;
+
 function createTetromino() {
+  if (isGameOver || hasTetrominoReachedTop) {
+    return;
+  }
+  // Check if new tetromino will overlap with existing tetrominos at top row
+  // this code was added later for the gameover function
+  const topRow = Array.from(Array(width), (_, i) => i);
+  const tetrominoOverlapping = topRow.some((index) =>
+    boxes[index].classList.contains("taken")
+  );
+
+  if (tetrominoOverlapping) {
+    hasTetrominoReachedTop = true;
+    gameOver();
+    return;
+  }
+
   current.forEach((index) => {
-    boxes[currentPosition + index].style.backgroundColor = colors[random]; //assigning a random color from colors array
+    boxes[currentPosition + index].style.backgroundColor = colors[random];
     console.log(index);
   });
 }
@@ -107,37 +126,20 @@ function removeTetromino() {
   });
 }
 
-//Function for key input actions
-function movement(event) {
-  if (event.code === "ArrowRight") {
-    goRight();
-  } else if (event.code === "ArrowLeft") {
-    goLeft();
-  } else if (event.code === "ArrowDown") {
-    scoreSel.innerText = score;
-    score++;
-    goDown();
-  }
-}
-function keyRotate(event) {
-  if (event.code === "ArrowUp") {
-    rotate();
-  }
-}
-
 //Function which makes the tetromino fall down
 function goDown() {
   if (
-    current.some(
-      (index) =>
-        boxes[currentPosition + index + width].classList.contains("taken") //checks if the next line contains the class taken.
-      //If it does then it calls the freeze function otherwise keeps moving the tetromino to the next line
+    current.some((index) =>
+      boxes[currentPosition + index + width].classList.contains("taken")
     )
   ) {
     freeze();
-    sound.src = "audioFiles/mixkit-quick-lock-sound-2854.wav";
-    sound.play();
+    if (!hasTetrominoReachedTop) {
+      sound.src = "audioFiles/mixkit-quick-lock-sound-2854.wav";
+      sound.play();
+    }
   } else {
+    displayTetromino();
     removeTetromino();
     currentPosition += width;
     createTetromino();
@@ -158,19 +160,35 @@ function freeze() {
   current.forEach((index) =>
     boxes[currentPosition + index].classList.add("taken")
   );
-  random = nextRandom; //saving the value
+  random = nextRandom;
   nextRandom = Math.floor(Math.random() * tetrominos.length);
   current = tetrominos[random][0];
   console.log(current);
   currentPosition = 4;
   removeLine();
   createTetromino();
-  displayTetromino();
-  gameOver();
+}
+
+//Function for key input actions
+function movement(event) {
+  if (event.code === "ArrowRight") {
+    goRight();
+  } else if (event.code === "ArrowLeft") {
+    goLeft();
+  } else if (event.code === "ArrowDown") {
+    scoreSel.innerText = score;
+    score++;
+    goDown();
+  }
+}
+
+function keyRotate(event) {
+  if (event.code === "ArrowUp") {
+    rotate();
+  }
 }
 
 //functions that stop the tetromino from going outside of the left border or right border of the grid
-
 function goLeft() {
   removeTetromino();
   const leftBorder = current.some(
@@ -196,9 +214,7 @@ function goRight() {
     (index) => (currentPosition + index) % width === 9
   );
   console.log(rightBorder);
-
   if (!rightBorder) currentPosition++;
-
   if (
     current.some((index) =>
       boxes[currentPosition + index].classList.contains("taken")
@@ -213,11 +229,9 @@ function goRight() {
 function isAtRight() {
   return current.some((index) => (currentPosition + index + 1) % width === 0);
 }
-
 function isAtLeft() {
   return current.some((index) => (currentPosition + index) % width === 0);
 }
-
 function isAtBottom() {
   return current.some(
     (index) => currentPosition + index + width > numberOfBoxes
@@ -270,12 +284,10 @@ function checkRotatedPosition() {
       current = tetrominos[random][currentRotation];
     }
   }
-
   console.log(isAtBottom());
 }
 
 //Function that rotates the tetromino by looping throught the different rotation states
-
 function rotate() {
   removeTetromino();
   currentRotation++;
@@ -288,27 +300,6 @@ function rotate() {
   checkRotatedPosition();
   createTetromino();
 }
-
-//Play/Pause button logic
-
-playPause.addEventListener("click", () => {
-  if (timerId) {
-    sound.src = "audioFiles/mixkit-positive-interface-beep-221.wav";
-    sound.play();
-    clearInterval(timerId);
-    timerId = null;
-    document.removeEventListener("keyup", keyRotate);
-    document.removeEventListener("keydown", movement);
-  } else {
-    sound.src = "audioFiles/mixkit-arcade-score-interface-217.wav";
-    sound.play();
-    createTetromino();
-    displayTetromino();
-    timerId = setInterval(goDown, 1000);
-    document.addEventListener("keyup", keyRotate);
-    document.addEventListener("keydown", movement);
-  }
-});
 
 //Removal of line if filled with tetrominoes
 function removeLine() {
@@ -333,21 +324,11 @@ function removeLine() {
         boxes[index].classList.remove("taken");
         boxes[index].style.backgroundColor = "";
       });
+      changingLevel();
       sound2.src = "audioFiles/mixkit-retro-arcade-casino-notification-211.wav";
       sound2.play();
-      lines++;
-      linesSel.innerText = lines;
-      if (lines === 5) {
-        level.innerText = "Level 2";
-        sound3.src = "audioFiles/mixkit-arcade-retro-changing-tab-206.wav";
-        sound3.play();
-        timerId = setInterval(goDown, 500);
-      } else if (lines === 10) {
-        sound3.src = "audioFiles/mixkit-arcade-retro-changing-tab-206.wav";
-        sound3.play();
-        level.innerText = "Level 3";
-        timerId = setInterval(goDown, 200);
-      }
+      score += 50; // Add 50 to the score when a line is removed
+      scoreSel.innerText = score;
       const boxesRemoved = boxes.splice(i, width); //With splice we get just the 10 last divs that contain the tetromino class
       boxes = boxesRemoved.concat(boxes); //With the concat method the array boxesRemoved is merged with the boxes array
       boxes.forEach((cell) => grid.appendChild(cell)); //The row that was deleted is appended on top of the grid so that the grid doesn't appear smaller
@@ -356,24 +337,72 @@ function removeLine() {
   }
 }
 
-//Function that triggers if a tetromino is at the top row
-function gameOver() {
-  const topRow = Array.from(Array(width), (_, i) => i); // Create an array representing the indices of the top row
-  const tetrominoOverlapping = topRow.some((index) =>
-    boxes[index].classList.contains("taken")
-  );
-  if (tetrominoOverlapping) {
+let timerId;
+let currentLevel = 1;
+let fallSpeed = 1000; // Initial falling speed
+//function to change the level called inside the removeLine function
+function changingLevel() {
+  lines++;
+  linesSel.innerText = lines;
+  if (lines === 5 && currentLevel === 1) {
+    currentLevel = 2;
+    sound3.src = "audioFiles/mixkit-arcade-retro-changing-tab-206.wav";
+    sound3.play();
+    clearInterval(timerId); // Clear existing timerId
+    fallSpeed = 450; // Update falling speed for level 2
+    timerId = setInterval(goDown, fallSpeed); // Update interval time to new falling speed
+    levelSel.innerText = "Level 2"; // Update level text in the DOM
+  } else if (lines === 10 && currentLevel === 2) {
+    currentLevel = 3;
+    sound3.src = "audioFiles/mixkit-arcade-retro-changing-tab-206.wav";
+    sound3.play();
     clearInterval(timerId);
-    sound4.src = "audioFiles/mixkit-arcade-retro-game-over-213.wav";
-    sound4.play();
-    const h1 = document.createElement("h1");
-    h1.innerText = "GAME OVER";
-    h1.style.color = "OldLace";
-    footer.appendChild(h1);
-    document.removeEventListener("keyup", keyRotate);
-    document.removeEventListener("keydown", movement);
+    fallSpeed = 200;
+    timerId = setInterval(goDown, fallSpeed);
+    levelSel.innerText = "Level 3";
   }
 }
+
+//Function that triggers when the tetromino reaches the top row called inside the createTetromino function
+function gameOver() {
+  clearInterval(timerId);
+  sound4.src = "audioFiles/mixkit-arcade-retro-game-over-213.wav";
+  sound4.play();
+  const h1 = document.createElement("h1");
+  h1.innerText = "GAME OVER";
+  h1.style.color = "OldLace";
+  footer.appendChild(h1);
+  setTimeout(() => {
+    window.location.reload();
+  }, 2000);
+  document.removeEventListener("keyup", keyRotate);
+  document.removeEventListener("keydown", movement);
+  isGameOver = true; // Set isGameOver to true when game over condition is met
+}
+
+//Play/Pause button logic
+playPause.addEventListener("click", () => {
+  if (timerId) {
+    // Game is currently running, so pause it
+    sound.src = "audioFiles/mixkit-positive-interface-beep-221.wav";
+    sound.play();
+    clearInterval(timerId);
+    timerId = null;
+    document.removeEventListener("keyup", keyRotate);
+    document.removeEventListener("keydown", movement);
+  } else {
+    // Game is currently paused, so resume it
+    sound.src = "audioFiles/mixkit-arcade-score-interface-217.wav";
+    sound.play();
+    if (!timerId) {
+      // Only create a new tetromino if the game is not already running
+      createTetromino();
+    }
+    timerId = setInterval(goDown, fallSpeed); // Use the stored fallSpeed value
+    document.addEventListener("keyup", keyRotate);
+    document.addEventListener("keydown", movement);
+  }
+});
 
 reset.addEventListener("click", () => {
   const sound6 = new Audio("audioFiles/mixkit-game-flute-bonus-2313.wav");
