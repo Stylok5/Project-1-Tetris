@@ -1,6 +1,6 @@
-**Project One - Tetris**
+# Project One - Tetris
 
-Table of Contents:
+## Table of Contents:
 
 1.  Project Overview
 2.  How to Play
@@ -14,19 +14,19 @@ Table of Contents:
 10. Key Learnings
 11. Credits
 
-**Project Overview**
+## Project Overview
 
 This project is an implementation of the classic game Tetris. It allows the player to move and rotate differently shaped falling pieces also known as tetrominoes to clear lines and score points. The game ends when the uncleared lines reach the top of the playing field. Most of the project was created using arrays and their methods, its purpose, practicing and improving javascript knowledge.
 
 Tetris is a puzzle video game created by the Soviet software engineer Alexey Pajitnov in 1984. It has been published by several companies for multiple platforms and is one of the best-selling video games of all time.
 
-This was my first project from General Assembly's Software Engineering Immersive course built in 13 days and my first real-world type practice with JavaScript.
+This was my first project from General Assembly's Software Engineering Immersive course built in 14 days and my first real-world type practice with JavaScript.
 
 Play Tetris here: https://stylok5.github.io/
 
 ![Alt text](https://i.imgur.com/IdCblQA.png "Optional title")
 
-**How to Play**
+## How to Play
 
 - Click play/pause to start the game click again to pause and click reset to reset everything back to 0.
 - Move the falling tetrominoes and adjust them to complete horizontal lines.
@@ -37,7 +37,7 @@ Play Tetris here: https://stylok5.github.io/
 - Level 2 when you reach 5 completed lines and level 3 for 10 lines.
 - The game ends when the tetrominoes reach the top of the game grid.
 
-**Game Brief**
+## Game Brief
 
 Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using like stack overflow.
 
@@ -55,7 +55,7 @@ This was the plan I ended up with :
 - Strech goals like adding a smaller grid that displays the next falling tetromino, adding sound effects and improving styling
 - Bug fixes
 
-**Techonologies Used**
+## Techonologies Used
 
 - HTML5 with HTML5 audio
 - CSS3 with animation
@@ -64,13 +64,13 @@ This was the plan I ended up with :
 - GitHub
 - Google Fonts
 
-**Timeline**
+## Timeline
 
-**Day 1** :
+### Day 1 :
 
 The first day was mostly spent on writing down what I had to do for the next two weeks and breaking everything down into smaller chunks. I tried to predict how many days I would need for the essential functionalities while leaving some room for my stretch goals.
 
-**Day 2** :
+### Day 2 :
 
 On the second day I started with creating a 10\*21 grid. I used a simple for loop to create the divs and append them to the grid element and also pushed them inside an initially empty boxes array which I would later use to display the tetrominoes. I then styled the grid-wrapper, grid and grid div.
 
@@ -86,7 +86,7 @@ Created two more arrays, first one containing the tetrominoes and second one for
 
 ![Alt text](https://i.imgur.com/kzasLwv.png "Optional title")
 
-**Day 3** :
+### Day 3 :
 
 I started getting into the trickier parts. First I had to figure out how to display the tetromino. So I decided the tetromino would appear in position 4 with its first rotation. I also used quite a lot of console logging and comments, to test and better understand how everything worked out as this was also my first big project. I also need a random tetromino to appear each time so I had to use a random variable.
 
@@ -102,7 +102,7 @@ After this I needed to create a goDown function that would make the tetromino fa
 
 ![Alt text](https://i.imgur.com/lVjAIRH.png "Optional title")
 
-**Day 4 and 5** :
+### Day 4 and 5 :
 
 For the fourth day I had two goals. First one was to make the tetrominoes stop moving when reaching the bottom row and to also make them stop when reaching another previously placed tetromino. This took me quite some time to work out. I decided that I would have another line underneath the last row of the grid that would basically be invinsible by setting the width and border to 0. I then added a classlist of taken for each div of this line.
 
@@ -122,7 +122,7 @@ which I then used in my goDown function
 
 that checks if there is a div that contains a class of taken. If there is it calls the freeze function otherwise the tetromino keeps falling.
 
-**Day 6 and 7**:
+### Day 6 and 7 :
 
 On day 6 I wanted to add movement with the arrow keys.
 
@@ -138,7 +138,7 @@ And finally for the rotate function,
 
 I incremented the currentPosition by one and then set the rotation to 0 after looping throught all rotation states. Then with the last two lines the current variable is updated with the next rotation and the tetromino is then created and displayed.
 
-**Day 8 and 9**:
+### Day 8 and 9 :
 
 Rotating the tetrominos posed a lot of new problems. First when the tetrominoes were rotated at the right, left or bottom side they would split and second when rotating next to other tetrominoes they would pass through them. This was quite tricky to solve and required a bit of research. The t and l tetrominoes specifically were the most challenging to fix. Making them not split when on the edge of each side was the easier part as it was similar to the movement part.
 
@@ -152,7 +152,7 @@ I used a lot of comments inside this checkRotatedPosition function to better und
 
 ![Alt text](https://i.imgur.com/NWgsB1t.png "Optional title")
 
-**Day 10 and 11**:
+### Day 10 and 11 :
 
 Now the basic functionalities left were to add the logic for removing a line when its filled with tetrominoes and a game over function when a tetromino reaches the top.
 
@@ -168,7 +168,7 @@ The function first checks if the topRow contains a class of taken, if it does it
 
 **Day 12**:
 
-I started with adding a play/pause and a reset button for the game. For the play/pause we use a _let timerId_ variable. It's initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
+I started with making a play/pause and a reset button for the game. For the play/pause I used a _let timerId_ variable. It's initial value is falsy so we can use that to define the play and pause functionality that depends on the timerId's value.
 
 ![Alt text](https://i.imgur.com/DO1dDy2.png "Optional title")
 
@@ -176,23 +176,35 @@ And then for the reset button I added a delay to the page reload for a sound to 
 
 ![Alt text](https://i.imgur.com/FF9fDOH.png "Optional title")
 
-After having basically completed the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio for some of the actions in game and added text for score lines and levels that would be incremented depending on some actions that were completed.
+After having basically added the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio for some of the actions in game. I continued with adding text for score, lines and levels that would be incremented depending on some actions that were completed.
 
 ![Alt text](https://i.imgur.com/IXh66a8.png "Optional title")
 
-Lastly an event listener so that the page wouldn't scroll down when pressing the arrow key.
+Lastly, I used an event listener so that the page wouldn't scroll down when pressing the arrow key.
 
 ![Alt text](https://i.imgur.com/70xnl9Q.png "Optional title")
 
-**Day 13**:
+### Day 13 and 14 :
 
-As I still had some time I decided to go for my stretch goal which was to make a smaller grid that would display then next tetromino falling down. I used a for loop for creating the small grid the same way I did for the game grid. Then I created an array that contained every first rotation of each tetromino and a function for displaying the next tetromino.
+As I still had some time I decided to go for my two stretch goals which were to make a smaller grid that would display the next tetromino falling down and a function that changes the speed the tetrominoes are falling depending on the lines removed. I used a for loop for creating the small grid the same way I did for the game grid. Then I created an array that contained every first rotation of each tetromino and a function for displaying the next tetromino.
 
 ![Alt text](https://i.imgur.com/LhxGd9F.png "Optional title")
 
-Spent the rest of the day testing everything for any errors and bugs, and policing the look of the game, so that it gives off an arcade feel. The app was finally deployed using GitHub pages.
+The logic to change the levels was a bit more complicated than I thought and required editing the code in other places as well. Even though the speed changed when reaching level 2 and 3 I couldn't pause the button and there was also a bug with the game over function. At first I had added every condition to change the levels in the removeLine function, but as the code was becoming hard to read I created a different changingLevel function and called that inside the removeLine.
 
-**Features**
+![Alt text](https://i.imgur.com/8IsaqKG.png "Optional title")
+
+The last thing left was to add a gameOver function.
+
+![Alt text](https://i.imgur.com/z2ZMS1G.png "Optional title")
+
+I also needed to stop the tetromino creation when reaching the top so I updated the code for createTetromino.
+
+![Alt text](https://i.imgur.com/P47D9j3.png "Optional title")
+
+The rest of the day was spent on ironing out any smaller bugs left and policing the look of the game, so that it gives off an arcade feel. The app was finally deployed using GitHub pages.
+
+## Features
 
 - Grid of 10 columns and 21 rows.
 - Five different tetromino shapes.
@@ -204,34 +216,28 @@ Spent the rest of the day testing everything for any errors and bugs, and polici
 - Sound effects for line completion and game over.
 - Small grid to display the next tetromino.
 
-**Bugs**
+## Bugs
 
-Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes. I managed to fix most of them, but I think there are still two small ones left, first one would be when a tetromino reaches the top there is a small delay before the game over function is triggered and also I think that the l tetromino still sometimes passes through other previously placed tetrominoes when rotating depending on its location on the grid.
+Throughout the project I experienced quite a lot of bugs. Most of them had to do with the rotation of the tetrominoes and the level change which I was not expecting it to pose as much of a challenge as it did. After a lot testing though, I think all the bugs have been fixed.
 
-**Wins and Challenges**
+## Wins and Challenges
 
-I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invinsible line that would contain the class of taken. Another big win was achieving my stretch goal of making a smaller grid that would display the next tetromino and also accomplishing the arcade feel I wanted for the game.
+I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invinsible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines succesfully removed.
 
-I would say the biggest challenges would be the freeze function and the conditions for the rotating tetrominoes.
+I would say the biggest challenges would be figuring out the freeze function, fixing the bugs having to do with the rotation of the tetrominoes and the levels change.
 
-**Future Content and Improvements**
+## Future Content and Improvements
 
-Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller screens. Prioritizing the resolution of those smaller bugs as well as improving code readability and conciseness would propably be my final improvements.
+Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller screens. Improving code readability and conciseness would also be a priority.
 
-**Key Learnings**
+## Key Learnings
 
-I found the project challenging but at the same time a really usefull learning experience. In general I would say that even the challenges I faced were quite beneficial as I became more accostumed to paying more attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. I also improved my researching and problem solving skills that were put to the test during this project.
+I found the project challenging but at the same time a really usefull learning experience. In general I would say that even the blockers I faced were quite beneficial as I became more accostumed to paying attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. Finally I think I improved my researching and problem solving skills and got a lot of confidence with writing code on my own, as I figured, that with enough trial and error everything can be fixed.
 
-**Credits**
+## Credits
 
-- Niklas Fischer, SEI instructor for starter code -- which helped in the creation of the grids.
+- Niklas Fischer, SEI instructor for starter code -- helped in the creation of the grids.
 
 - Ania Kubow's Code Tetris: JavaScript Tutorial for Beginners https://www.youtube.com/watch?v=rAUn1Lom6dw
 
 - Stack Overflow: https://stackoverflow.com/
-
-## Related
-
-Here are some related projects
-
-[Awesome README](https://github.com/matiassingers/awesome-readme)
