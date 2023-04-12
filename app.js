@@ -92,6 +92,7 @@ let current = tetrominos[random][currentRotation];
 console.log(tetrominos);
 console.log(tetrominos.length);
 console.log(current.length);
+
 let isGameOver = false;
 let hasTetrominoReachedTop = false;
 
