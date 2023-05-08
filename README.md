@@ -3,16 +3,17 @@
 ## Table of Contents:
 
 1.  Project Overview
-2.  How to Play
-3.  Game Brief
-4.  Technologies Used
-5.  Timeline
-6.  Features
-7.  Bugs
-8.  Wins and Challenges
-9.  Future Content and Improvements
-10. Key Learnings
-11. Credits
+2.  Installation
+3.  How to Play
+4.  Game Brief
+5.  Technologies Used
+6.  Timeline
+7.  Features
+8.  Bugs
+9.  Wins and Challenges
+10. Future Content and Improvements
+11. Key Learnings
+12. Credits
 
 ## Project Overview
 
@@ -22,13 +23,17 @@ Tetris is a puzzle video game created by the Soviet software engineer Alexey Paj
 
 This was my first project from General Assembly's Software Engineering Immersive course built in 14 days and my first real-world type practice with JavaScript.
 
-Play Tetris here: https://stylok5.github.io/
+Play Tetris here: https://stylok5.github.io/Project_1/
 
 ![Alt text](https://i.imgur.com/IdCblQA.png "Optional title")
 
+## Installation
+
+No external dependencies are required to run this project. So you simply do git clone and copy the ssh key like this **'git clone git@github.com:Stylok5/Project_1.git'** into an empty folder, using your terminal and then do **code .** to open the project with Visual Studio code. You can then right click on the index.html file and open with live server or click on the bottom right where it says **Go Live**, if you are using Visual Studio code. To make changes to the code you can use the following commands: git **add .** , **git commit -m "message"**, **git push**.
+
 ## How to Play
 
-- Click play/pause to start the game click again to pause and click reset to reset everything back to 0.
+- Click play/pause to start the game, click again to pause and click reset to reset everything back to 0.
 - Move the falling tetrominoes and adjust them to complete horizontal lines.
 - Use the left and right arrow keys to move the tetrominoes horizontally.
 - Use the up arrow key to rotate the tetrominoes.
@@ -39,7 +44,7 @@ Play Tetris here: https://stylok5.github.io/
 
 ## Game Brief
 
-Out of the options we were given for this project, Tetris ranked as one of the highest in difficulty. For a first project it was quite intimidating, but I really wanted to test and improve my skills, but also learn how to research and figure out problems on my own or by using sites like stack overflow.
+Although Tetris was one of the most challenging options for our project, I embraced the opportunity to test and enhance my problem-solving and logical thinking abilities. As a first project, it was certainly intimidating, but I was determined to improve my researching skills and learn how to efficiently find solutions to my own problems using online resources like Stack Overflow and ChatGPT.
 
 Before I started with coding I wrote some pseudocode and did some wireframing using excalidraw, so that I could better plan out what I would do each day by breaking the project into smaller parts.
 This was the plan I ended up with :
@@ -96,7 +101,7 @@ For now creating the tetromino I looped through the current array, and added cur
 
 ![Alt text](https://i.imgur.com/4hPQ4Z7.png "Optional title")
 
-After this I needed to create a goDown function that would make the tetromino fall down. For that I would need to add the width to the currentPosition so that the tetromino would move a row down. But I also needed to remove the previous tetromino otherwise they would keep stacking together. So I created a remove function and then combined all together in my goDown function.
+After this I needed to create a goDown function that would make the tetromino fall down. For that I would need to add the width to the currentPosition so that the tetromino would move a row down. But I also needed to remove the previous tetromino otherwise they would keep stacking together. So I created a remove function and then combined it all together in my goDown function.
 
 ![Alt text](https://i.imgur.com/Dc9q8PY.png "Optional title")
 
@@ -136,7 +141,7 @@ And finally for the rotate function,
 
 ![Alt text](https://i.imgur.com/blbXywL.png "Optional title")
 
-I incremented the currentPosition by one and then set the rotation to 0 after looping through all rotation states. Then with the last two lines the current variable is updated with the next rotation and the tetromino is then created and displayed.
+I increment the currentPosition by one and then set the rotation to 0 after looping through all rotation states. Then with the last two lines the current variable is updated with the next rotation and the tetromino is then created and displayed.
 
 ### Day 8 and 9 :
 
@@ -176,7 +181,7 @@ And then for the reset button I added a delay to the page reload for a sound to 
 
 ![Alt text](https://i.imgur.com/FF9fDOH.png "Optional title")
 
-After having basically added the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio for some of the actions in game. I continued with adding text for score, lines and levels that would be incremented depending on some actions that were completed.
+After having basically added the core functionalities of the game I started working on the styling and the overall presentation of the project using css. I also created a sound effects folder to add some audio files for some of the game actions. I continued with adding text for score, lines and levels that would be incremented depending on some actions that were completed.
 
 ![Alt text](https://i.imgur.com/IXh66a8.png "Optional title")
 
@@ -222,13 +227,13 @@ Throughout the project I experienced quite a lot of bugs. Most of them had to do
 
 ## Wins and Challenges
 
-I was particularly happy when I figured a way to freeze a tetromino at the bottom by making a new invisible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines successfully removed.
+I was particularly happy when figured out a way to freeze a tetromino at the bottom by making a new invisible line that would contain the class of taken. Another big win was achieving my stretch goals of making a smaller grid that would display the next tetromino and making the levels change depending on the lines successfully removed.
 
-I would say the biggest challenges would be figuring out the freeze function, fixing the bugs having to do with the rotation of the tetrominoes and the level change.
+I faced quite a lot of challenges, particularly figuring out the freeze function logic, fixing the bugs related to the tetrominoe's rotation and implementing the level change and game over functionalities. The last two proved more challenging than I had initially though as they generated quite a few bugs, like pausing not working when a level is changed, and tetrominoes that kept falling even after game over was triggered.
 
 ## Future Content and Improvements
 
-Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller screens. Improving code readability and conciseness would also be a priority.
+Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller or bigger screens. Improving code readability and conciseness would also be a priority.
 
 ## Key Learnings
 
