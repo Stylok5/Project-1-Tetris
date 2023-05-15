@@ -23,7 +23,7 @@ Tetris is a puzzle video game created by the Soviet software engineer Alexey Paj
 
 This was my first project from General Assembly's Software Engineering Immersive course built in 14 days and my first real-world type practice with JavaScript.
 
-Play Tetris [here](bit.ly/3o0adBJ)
+Play Tetris [here](https://stylok5.github.io/Project-1-Tetris/)
 
 ![Alt text](https://i.imgur.com/IdCblQA.png "Optional title")
 
