@@ -97,7 +97,7 @@ I started getting into the trickier parts. First I had to figure out how to disp
 
 ![Alt text](https://i.imgur.com/mwCn2Q0.png "Optional title")
 
-For now creating the tetromino I looped through the current array, and added currentPosition and index. The currentPosition variable represents the current vertical position of the tetromino on the game board. Index refers to the individual cells that make up the tetromino. With adding those two together we get the absolute position of each div on the game board. I then access the corresponding boxes array which represents the DOM element of the div in the game board grid with this _boxes[currentPosition + index]_ and set the color of the tetromino.
+For now creating the tetromino I looped through the current array, and added currentPosition and index. The currentPosition variable represents the current vertical position of the tetromino on the game board. Index refers to the individual cells that make up the tetromino. With adding those two together we get the absolute position of each div on the game board. I then access the corresponding boxes array which represents the DOM element of the div in the game board grid with these _boxes[currentPosition + index]_ and set the color of the tetromino.
 
 ![Alt text](https://i.imgur.com/4hPQ4Z7.png "Optional title")
 
@@ -159,7 +159,7 @@ I used a lot of comments inside this checkRotatedPosition function to better und
 
 ### Day 10 and 11 :
 
-Now the basic functionalities left were to add the logic for removing a line when its filled with tetrominoes and a game over function when a tetromino reaches the top.
+Now the basic functionalities left were to add the logic for removing a line when it's filled with tetrominoes and a game over function when a tetromino reaches the top.
 
 ![Alt text](https://i.imgur.com/DMtXjDh.png "Optional title")
 
