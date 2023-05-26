@@ -184,7 +184,7 @@ h1 {
     padding: 20px 28px 20px 28px;
     border-radius: 5%;
     position: relative;
-    bottom: 1em;
+    bottom: 2em;
     left: 15em;
     background-color: rgb(180, 180, 48);
     box-shadow: 10px 5px 5px rgb(95, 95, 26);
@@ -193,7 +193,7 @@ h1 {
     display: flex;
     width: 80px;
     flex-wrap: wrap;
-    bottom: 14em;
+    bottom: 16em;
     position: relative;
     left: 68em;
     background-color: black;
@@ -201,7 +201,7 @@ h1 {
   .nextTetr {
     position: relative;
     left: 56em;
-    bottom: 12.5em;
+    bottom: 13.5em;
   }
 }
 
