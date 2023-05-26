@@ -40,7 +40,6 @@ body {
   display: flex;
   width: 5em;
   position: relative;
-  bottom: 10em;
   left: 111em;
   flex-wrap: wrap;
   background-color: black;
@@ -73,7 +72,6 @@ h1 {
   border-radius: 5%;
   position: relative;
   left: 40em;
-  top: 3em;
   background-color: rgb(180, 180, 48);
   box-shadow: 10px 5px 5px rgb(95, 95, 26);
 }
@@ -99,11 +97,6 @@ h1 {
   margin-left: 30vh;
 }
 
-footer {
-  position: relative;
-  bottom: 4em;
-}
-
 .resetBtn {
   background-color: rgb(215, 84, 84);
   border: 1px solid rgb(185, 87, 87);
@@ -113,7 +106,7 @@ footer {
   padding: 20px 45px 20px 45px;
   font-size: 18px;
   position: relative;
-  left: 65em;
+  left: 66em;
   top: 3em;
   box-shadow: 10px 5px 5px rgb(107, 50, 50);
 }
@@ -155,7 +148,7 @@ footer {
     font-size: 18px;
     position: relative;
     top: 13em;
-    left: 1.5em;
+    left: 1em;
     box-shadow: 10px 5px 5px rgb(155, 60, 60);
   }
 
@@ -177,7 +170,7 @@ footer {
     font-size: 18px;
     position: relative;
     top: 13em;
-    left: 37.5em;
+    left: 38em;
     box-shadow: 10px 5px 5px rgb(155, 60, 60);
   }
 
@@ -191,8 +184,8 @@ footer {
     padding: 20px 28px 20px 28px;
     border-radius: 5%;
     position: relative;
+    bottom: 1em;
     left: 15em;
-    top: -5em;
     background-color: rgb(180, 180, 48);
     box-shadow: 10px 5px 5px rgb(95, 95, 26);
   }
@@ -200,7 +193,7 @@ footer {
     display: flex;
     width: 80px;
     flex-wrap: wrap;
-    bottom: 18em;
+    bottom: 14em;
     position: relative;
     left: 68em;
     background-color: black;
@@ -208,6 +201,48 @@ footer {
   .nextTetr {
     position: relative;
     left: 56em;
+    bottom: 12.5em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .smallGrid {
+    display: flex;
+    width: 80px;
+    flex-wrap: wrap;
+
+    background-color: black;
+  }
+  .nextTetr {
+    position: relative;
+    left: 56em;
     bottom: 15em;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .smallGrid {
+    display: flex;
+    width: 80px;
+    flex-wrap: wrap;
+    bottom: 9em;
+    background-color: black;
+  }
+  .progress {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    padding: 20px 28px 20px 28px;
+    border-radius: 5%;
+    position: relative;
+    top: 6em;
+
+    background-color: rgb(180, 180, 48);
+    box-shadow: 10px 5px 5px rgb(95, 95, 26);
+  }
+  .nextTetr {
+    position: relative;
+    left: 93em !important;
+    bottom: 8em;
   }
 }
