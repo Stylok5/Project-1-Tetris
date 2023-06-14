@@ -367,10 +367,15 @@ function gameOver() {
   clearInterval(timerId);
   sound4.src = "audioFiles/mixkit-arcade-retro-game-over-213.wav";
   sound4.play();
-  const h1 = document.createElement("h1");
-  h1.innerText = "GAME OVER";
-  h1.style.color = "OldLace";
-  footer.appendChild(h1);
+  const h2 = document.createElement("h2");
+  h2.innerText = "GAME OVER";
+  h2.style.color = "Wheat";
+  h2.style.fontSize = "49px";
+  h2.style.position = "absolute";
+  h2.style.left = "50%";
+  h2.style.top = "55%";
+  h2.style.transform = "translate(-50%, -50%)";
+  footer.appendChild(h2);
   setTimeout(() => {
     window.location.reload();
   }, 2000);

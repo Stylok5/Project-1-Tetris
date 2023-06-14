@@ -235,6 +235,10 @@ I faced quite a lot of challenges, particularly figuring out the freeze function
 
 Some future improvements would be to make the app mobile responsive as the styling only works for a 27 inch screen or a 14 inch macbook screen but breaks for smaller or bigger screens. Improving code readability and conciseness would also be a priority.
 
+### Update
+
+The app is now fully responsive for all screen sizes and any additional bugs have been fixed
+
 ## Key Learnings
 
 I found the project challenging but at the same time a really useful learning experience. In general I would say that even the blockers I faced were quite beneficial as I became more accustomed to paying attention to every single detail, writing comments and console logging everything to have a better understanding of what I need to do. I also learned that sometimes I need to take a break when I'm stuck on a problem for too long and look at it again the next day with a clearer mind. Finally I think I improved my research and problem solving skills and got a lot of confidence with writing code on my own, as I figured that, that with enough trial and error and by staying persistent, anything can be fixed.
